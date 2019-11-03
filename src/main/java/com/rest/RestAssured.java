@@ -1,5 +1,9 @@
 package com.rest;
 
+import com.rest.api.RequestBuilder;
+
+import static io.restassured.RestAssured.given;
+
 /**
  * @author : xuanke
  * @version V1.0
@@ -9,4 +13,13 @@ package com.rest;
  */
 
 public class RestAssured {
+    /**
+     *  entrance
+     * @return
+     */
+    public static RequestBuilder RestAssuredWrapper(){
+        return new RequestBuilder(given());
+    }
+
+
 }
