@@ -8,7 +8,7 @@ import java.util.Map;
 /**
  * @author xuanke(zhou.liwei @ mydreamplus.com)
  * @createTime 2019-11-02-11:55
- * @description 描述信息
+ * @description 对请求信息进行组装构建
  */
 public class RequestBuilder {
     private RequestSpecification specification;
@@ -100,7 +100,9 @@ public class RequestBuilder {
         specification.body(postBody);
         return this;
     }
+
     /**
+     *
      *  get request
      * @param url
      * @return
@@ -120,5 +122,26 @@ public class RequestBuilder {
         return new ResponseBuilder(response);
     }
 
+
+    /**
+     *  put request
+     *
+     * @param url
+     * @return
+     */
+    public  ResponseBuilder put(String url){
+        Response response = specification.put(url);
+        return new ResponseBuilder(response);
+    }
+
+    /**
+     *  调用delete方法
+     * @param url
+     * @return
+     */
+    public ResponseBuilder delete(String url){
+       Response response =  specification.delete(url);
+       return new ResponseBuilder(response);
+    }
 
 }
