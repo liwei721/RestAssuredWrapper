@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="warn">
+    <Properties>
+        <Property name="baseDir">/log</Property>
+        <Property name="fileName">rest-assured-wrapper.log</Property>
+    </Properties>
+    <!--定义所有的appenders-->
+    <Appenders>
+        <!--输出到控制台的配置-->
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+        <!--这个会打印出所有信息，每次大小超过size，则这size大小的日志会自动按年份-月份建立文件夹压缩-->
+        <RollingFile name="RollingFile" fileName="${baseDir}/logs/app.log"
+                     filePattern="${baseDir}/logs/app-%d{MM-dd-yyyy}.log.gz">
+            <RegexFilter regex=".*password.*" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout>
+                <pattern>%d %p %c{1.} [%t] %m%n</pattern>
+            </PatternLayout>
+            <TimeBasedTriggeringPolicy />
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <AsyncLogger name="com.rest" level="debug" additivity="false" includeLocation="true">
+            <AppenderRef ref="RollingFile"/>
+        </AsyncLogger>
+        <AsyncRoot level="info">
+            <AppenderRef ref="console"/>
+        </AsyncRoot>
+    </Loggers>
+</Configuration>
