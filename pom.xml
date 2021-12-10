@@ -10,7 +10,7 @@
 
     <properties>
         <commons.cli.version>1.4</commons.cli.version>
-        <logging.log4j.version>2.12.1</logging.log4j.version>
+        <logging.log4j.version>2.15.0</logging.log4j.version>
         <org.slf4j.version>1.7.29</org.slf4j.version>
         <lombok.version>1.18.10</lombok.version>
     </properties>
